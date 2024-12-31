@@ -1,0 +1,9 @@
+Fundo -> #a5abc5
+
+Pilares -> #636194
+
+Letreiros -> #b1ba93
+
+Borda das janelas -> #636194
+
+Luz das janelas -> #e5bc43

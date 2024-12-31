@@ -1,0 +1,29 @@
+Unidade gráfica -> Um "quadradinho" no display bitmap, quanto  menor a dimensão maior a quantidade de unidades gráficas para preencher a resolução do display;
+
+O display bitmap mapeia os endereços de memória em forma de unidades gráficas: cada quadradinho é um endereço de memória;
+
+Pegar o primeiro endereço de memória -> lui $8, 0x1001;
+
+Cada endereço comporta um valor que possa ser representado em até 32 bits;
+
+Para passar para o próximo endereço, soma-se quatro ao valor do endereço anterior;
+
+Ex: addi $8, $8, 4 -> o registrador 8, que antes possuia o primeiro endereço de memória, agora possui o segundo endereço;
+
+Resolução -> 512x256;
+
+Unidade gráfica -> 4x4;
+
+A construção do cenário ocorrerá por meio da combinação de cores das unidades gráficas, ou seja, um valor de cor será atribuido à cada quadradinho por meio de um valor dividido em quatro partes, que será gravado no endereço de memória do quadrado;
+
+null | red | green | blue -> divisão das cores por meio de uma combinação RGB;
+
+lui $8, 0x1001 -> primeiro endereço;
+
+lui $9, 0x00ff -> cor vermelha em hexadecimal;
+
+sw $9, 0($8) -> grava no endreço do registrador 8 o valor do registrador 9 e mostra no display bitmap;
+
+O primeiro quadrado de cada linha será = número da linha x 512(as linhas vão de 0 a 63);
+
+A linha sempre começa com o número da linha x 512 e sempre termina com o 508 + (512 x número da linha);
