@@ -18,9 +18,9 @@ forFundo:
 	sub $12, $12, 1
 	j forFundo
 
-fimFundo:
-	lui $8, 0x1001
-	addi $12, $0, 64 # i
+        fimFundo:
+                lui $8, 0x1001
+                addi $12, $0, 64 # i
 forBorda:
 	beq $0, $12, fimBorda
 	
@@ -30,9 +30,9 @@ forBorda:
 	sub $12, $12, 1
 	j forBorda
 
-fimBorda:
-	lui $8, 0x1001
-	addi $12, $0, 25 # i
+        fimBorda:
+                lui $8, 0x1001
+                addi $12, $0, 25 # i
 forPilar:
 	beq $0, $12, fimPilar
 	
@@ -236,9 +236,10 @@ forPilar:
 	sub $12, $12, 1
 	j forPilar
 
-fimPilar:
-	lui $8, 0x1001
-	addi $12, $0, 13 # i
+        fimPilar:
+                lui $8, 0x1001
+                addi $12, $0, 13 # i
+                
 forBordaJanelaHori:
 	beq $0, $12, fimBordaJanelaHori
 	
@@ -255,9 +256,10 @@ forBordaJanelaHori:
 	sub $12, $12, 1
 	j forBordaJanelaHori
 	
-fimBordaJanelaHori:
-	lui $8, 0x1001
-	addi $12, $0, 7 # i
+        fimBordaJanelaHori:
+                lui $8, 0x1001
+                addi $12, $0, 7 # i
+                
 forBordaJanelaVert:
 	beq $0, $12, fimBordaJanelaVert
 	
@@ -283,9 +285,9 @@ forBordaJanelaVert:
 	sub $12, $12, 1
 	j forBordaJanelaVert
 
-fimBordaJanelaVert:
-	lui $8, 0x1001
-	addi $12, $0, 7 # i
+        fimBordaJanelaVert:
+                lui $8, 0x1001
+                addi $12, $0, 7 # i
 forLuzJanela:
 	beq $0, $12, fimLuzJanela
 	
@@ -331,11 +333,11 @@ forLuzJanela:
 	sub $12, $12, 1
 	j forLuzJanela
 	
-fimLuzJanela:
-	lui $8, 0x1001
-	addi $8, $8, 29184
-	addi $12, $0, 0x5c5696 # solo
-	addi $13, $0, 896 # i
+        fimLuzJanela:
+                lui $8, 0x1001
+                addi $8, $8, 29184
+                addi $12, $0, 0x5c5696 # solo
+                addi $13, $0, 896 # i
 forSolo:
 	beq $0, $13, fimSolo
 	
@@ -350,5 +352,5 @@ forSolo:
         
         addi $20, $0, 8192
 
-fimSolo:
-        jr $31
+        fimSolo:
+                jr $31

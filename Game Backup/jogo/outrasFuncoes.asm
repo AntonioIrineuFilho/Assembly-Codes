@@ -16,32 +16,32 @@
 
 delay:
 	addi $15, $0, 1000000
-forDelay:
-	beq $0, $15, fimDelay
-	nop
-	nop
-	nop
-	sub $15, $15, 1
-	j forDelay
-fimDelay:
-	jr $31
+	forDelay:
+		beq $0, $15, fimDelay
+		nop
+		nop
+		nop
+		sub $15, $15, 1
+		j forDelay
+		fimDelay:
+			jr $31
 
 #--------------------------------------------------------------------------------
 
 copiaCenario:
 	lui $8, 0x1001
 	addi $13, $0, 8192 # i
-forCopia:
-	beq $0, $13, fimCopia
-	
-	lw $14, 0($8)
-	sw $14, 32768($8)
-	addi $8, $8, 4
-	
-	sub $13, $13, 1
-	j forCopia
-fimCopia:
-	jr $31
+	forCopia:
+		beq $0, $13, fimCopia
+		
+		lw $14, 0($8)
+		sw $14, 32768($8)
+		addi $8, $8, 4
+		
+		sub $13, $13, 1
+		j forCopia
+		fimCopia:
+			jr $31
 	
 #--------------------------------------------------------------------------------	
 								
@@ -54,28 +54,28 @@ movOrbes:
 	lui $12, 0x1001
 	addi $16, $0, 200 # i
 	add $17, $0, $31
-forMov:
-	beq $0, $16, fimMov
-	
-	jal orbe1
-	jal orbe2
-	jal orbe3
-	jal orbe4
-	jal orbe5
-	jal delay
-	jal recuperaCenarioOrbes
-	addi $8, $8, 512
-	addi $9, $9, 512
-	addi $10, $10, 2048
-	addi $11, $11, 1024
-	addi $12, $12, 1536
-	
-	sub $16, $16, 1
-	j forMov
-fimMov:
-	j movOrbes
-	add $31, $0, $17
-	jr $31 
+	forMov:
+		beq $0, $16, fimMov
+		
+		jal orbe1
+		jal orbe2
+		jal orbe3
+		jal orbe4
+		jal orbe5
+		jal delay
+		jal recuperaCenarioOrbes
+		addi $8, $8, 512
+		addi $9, $9, 512
+		addi $10, $10, 2048
+		addi $11, $11, 1024
+		addi $12, $12, 1536
+		
+		sub $16, $16, 1
+		j forMov
+		fimMov:
+			j movOrbes
+			add $31, $0, $17
+			jr $31 
 	
 #--------------------------------------------------------------------------------
 	
@@ -116,7 +116,7 @@ colisaoOrbe:
         addi $2, $0, 11
         syscall
 	
-	j fim
+		j fim
 
 #--------------------------------------------------------------------------------
 
@@ -137,8 +137,8 @@ movSully:
 	addi $15, $0, 100 # tecla d
 	beq $15, $14, movDireita
 
-fimMovSully:
-	add $31, $0, $18
-	jr $31
+	fimMovSully:
+		add $31, $0, $18
+		jr $31
 	
 	

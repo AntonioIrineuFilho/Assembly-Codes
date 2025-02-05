@@ -4,17 +4,28 @@
 
 
 movEsquerda:
+	addi $22, $0, 0x1000ff3c # pixel de colisão com a borda esquerda
+	beq $21, $22, colisaoBordaEsquerda
 	jal recuperaCenarioSully
-	addi $21, $21, -8
+	addi $21, $21, -4
 	jal sully
-	j testeMov
+	dontMovEsquerda:
+		j testeMov
 
 movDireita:
+	addi $22, $0, 0x100100ec # pixel de colisão com a borda direita
+	beq $21, $22, colisaoBordaDireita
 	jal recuperaCenarioSully
-	addi $21, $21, 8
+	addi $21, $21, 4
 	jal sully
-	j testeMov
+	dontMovDireita:
+		j testeMov
 
+colisaoBordaEsquerda:
+	j dontMovEsquerda
+
+colisaoBordaDireita:
+	j dontMovDireita
 
 sully:
 	addi $20, $0, 0x9f9b90 # cor chifre
