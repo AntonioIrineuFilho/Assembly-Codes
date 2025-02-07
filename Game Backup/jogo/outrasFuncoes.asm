@@ -1,6 +1,6 @@
 .data
 .text
-.globl delay, copiaCenario, movOrbes, colisaoOrbe, movSully
+.globl delay, copiaCenario, movGeral, returnMovSully, gameOver, movSully
 
 
 #-------------------FUNCOES-----------------------------------------------------------------------
@@ -15,7 +15,7 @@
 # REGS NAO UTILIZADOS -> 23, 24, 25
 
 delay:
-	addi $15, $0, 1000000
+	addi $15, $0, 200000
 	forDelay:
 		beq $0, $15, fimDelay
 		nop
@@ -46,17 +46,15 @@ copiaCenario:
 #--------------------------------------------------------------------------------	
 								
 										
-movOrbes:
+movGeral:
 	lui $8, 0x1001 
 	lui $9, 0x1001
 	lui $10, 0x1001
 	lui $11, 0x1001
 	lui $12, 0x1001
-	addi $16, $0, 200 # i
-	add $17, $0, $31
 	forMov:
-		beq $0, $16, fimMov
-		
+		jal movSully
+		returnMovSully:
 		jal orbe1
 		jal orbe2
 		jal orbe3
@@ -65,21 +63,18 @@ movOrbes:
 		jal delay
 		jal recuperaCenarioOrbes
 		addi $8, $8, 512
-		addi $9, $9, 512
-		addi $10, $10, 2048
-		addi $11, $11, 1024
-		addi $12, $12, 1536
-		
-		sub $16, $16, 1
-		j forMov
-		fimMov:
-			j movOrbes
-			add $31, $0, $17
-			jr $31 
+		addi $9, $9, 1024
+		addi $10, $10, 1536
+		addi $11, $11, 512
+		addi $12, $12, 512
+
+		j forMov 
 	
 #--------------------------------------------------------------------------------
 	
-colisaoOrbe:
+gameOver:
+	jal sully
+	
         addi $4, $0, 'G'
         addi $2, $0, 11
         syscall
@@ -116,7 +111,7 @@ colisaoOrbe:
         addi $2, $0, 11
         syscall
 	
-		j fim
+	j fim
 
 #--------------------------------------------------------------------------------
 
@@ -138,6 +133,7 @@ movSully:
 	beq $15, $14, movDireita
 
 	fimMovSully:
+		jal sully
 		add $31, $0, $18
 		jr $31
 	

@@ -354,7 +354,7 @@ verificador1:
         lw $19, 32768($18)
         sw $19, 0($18)
 	
-	j colisaoOrbe
+	j gameOver
 	
 verificador2:
         addi $18, $8, 48
@@ -703,7 +703,7 @@ verificador2:
         lw $19, 32768($18)
         sw $19, 0($18)
 	
-	j colisaoOrbe
+	j gameOver
 	
 verificador3:
         addi $18, $8, 48
@@ -1049,7 +1049,7 @@ verificador3:
         lw $19, 32768($18)
         sw $19, 0($18)
 	
-	j colisaoOrbe
+	j gameOver
 	
 verificador4:
         addi $18, $8, 48
@@ -1396,7 +1396,7 @@ verificador4:
         lw $19, 32768($18)
         sw $19, 0($18)
 	
-	j colisaoOrbe
+	j gameOver
 	
 verificador5:
         addi $18, $8, 48
@@ -1743,4 +1743,4 @@ verificador5:
         lw $19, 32768($18)
         sw $19, 0($18)
 
-	j colisaoOrbe
+	j gameOver
